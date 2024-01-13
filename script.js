@@ -38,15 +38,7 @@ $('#percentEl').on("click", function() {
 })
 
 $('#multiEl').on("click", function() {
-  $('.footer').html("masih dalam tahap pengerjaan");
-  $('.footer').css("color", "#f00");
-  $('.footer').css("opacity", "1");
-
-  setTimeout(function() {
-  $('.footer').html("mininxd");
-  $('.footer').css("color", "#000");
-  $('.footer').css("opacity", "0.4");
-    }, 2000)
+  $('#rumusEl').append("^");
 })
 
 
@@ -58,10 +50,10 @@ $('#kurangEl').on("click", function() {
   $('#rumusEl').append("-")
 })
 $('#kaliEl').on("click", function() {
-  $('#rumusEl').append("*")
+  $('#rumusEl').append("×")
 })
 $('#bagiEl').on("click", function() {
-  $('#rumusEl').append("/")
+  $('#rumusEl').append("÷")
 })
 $('#deleteEl').on("click", function() {
  var del = document.createTextNode(rumus.textContent.slice(0,-1));
@@ -84,5 +76,20 @@ $('#clearEl').on("click", function() {
 
 //hitung rumusnya
 $('#jumlahEl').on("click", function() {
-  $('#hasilEl').html(eval(rumus.textContent));
+  
+var defineMulti = rumus.textContent.replace(/\^/g, "**");
+
+  var operator = {
+    '÷' : '/',
+    '×' : '*'
+  }
+ 
+var convertOperator =  defineMulti.replace(/\b(?:÷|×)\b/gi, function(convert){
+  return operator[convert];
+});
+
+
+// console.log(convertOperator + "=" + eval(convertOperator));
+
+  $('#hasilEl').html(eval(convertOperator));
 })
