@@ -51,6 +51,11 @@ $('#kaliEl').on("click", function() {
 $('#bagiEl').on("click", function() {
   $('#rumusEl').append("/")
 })
+$('#deleteEl').on("click", function() {
+ var del = document.createTextNode(rumus.textContent.slice(0,-1));
+ rumus.innerHTML = "";
+ rumus.appendChild(del);
+})
 //animasi fade out ketika dihapus AC
 $('#clearEl').on("click", function() {
   $('#rumusEl').css("opacity","0");
