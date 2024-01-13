@@ -37,6 +37,18 @@ $('#percentEl').on("click", function() {
   $('#rumusEl').append("%");
 })
 
+$('#multiEl').on("click", function() {
+  $('.footer').html("masih dalam tahap pengerjaan");
+  $('.footer').css("color", "#f00");
+  $('.footer').css("opacity", "1");
+
+  setTimeout(function() {
+  $('.footer').html("mininxd");
+  $('.footer').css("color", "#000");
+  $('.footer').css("opacity", "0.4");
+    }, 2000)
+})
+
 
 
 $('#tambahEl').on("click", function() {
