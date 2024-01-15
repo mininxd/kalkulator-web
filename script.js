@@ -69,7 +69,7 @@ $('#clearEl').on("click", function() {
         $('#hasilEl').css("opacity","1");
         $('#rumusEl').html("");
         $('#hasilEl').html("");
-    }, 400)
+    }, 60)
 })
 //
 
@@ -91,5 +91,12 @@ var convertOperator =  defineMulti.replace(/\b(?:÷|×)\b/gi, function(convert){
 
 // console.log(convertOperator + "=" + eval(convertOperator));
 
+  try {
   $('#hasilEl').html(eval(convertOperator));
+  $('#hasilEl').css("color", "black");
+} catch (e) {
+  $('#hasilEl').html("Format Error");
+  $('#hasilEl').css("color", "red");
+}
+hitungRumus();
 })
