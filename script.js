@@ -98,5 +98,4 @@ var convertOperator =  defineMulti.replace(/\b(?:÷|×)\b/gi, function(convert){
   $('#hasilEl').html("Format Error");
   $('#hasilEl').css("color", "red");
 }
-hitungRumus();
 })
