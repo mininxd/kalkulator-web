@@ -40,6 +40,27 @@ $('#percentEl').on("click", function() {
 $('#multiEl').on("click", function() {
   $('#rumusEl').append("^");
 })
+$('#piEl').on("click", function() {
+  $('#rumusEl').append("π");
+})
+$('#sqrtEl').on("click", function() {
+  $('#rumusEl').append("√(");
+})
+$('#bukaEl').on("click", function() {
+   $('#rumusEl').append("(");
+})
+$('#tutupEl').on("click", function() {
+  $('#rumusEl').append(")");
+ })
+$('#sinEl').on("click", function() {
+  $('#rumusEl').append("sin(");
+ })
+$('#cosEl').on("click", function() {
+  $('#rumusEl').append("cos(");
+ })
+$('#tanEl').on("click", function() {
+  $('#rumusEl').append("tan(");
+ })
 
 
 
@@ -59,6 +80,7 @@ $('#deleteEl').on("click", function() {
  var del = document.createTextNode(rumus.textContent.slice(0,-1));
  rumus.innerHTML = "";
  rumus.appendChild(del);
+
 })
 //animasi fade out ketika dihapus AC
 $('#clearEl').on("click", function() {
@@ -77,14 +99,18 @@ $('#clearEl').on("click", function() {
 //hitung rumusnya
 $('#jumlahEl').on("click", function() {
   
-var defineMulti = rumus.textContent.replace(/\^/g, "**");
-
+var pi = rumus.textContent.replace(/π/g, "Math.PI");
+var defineMulti = pi.replace(/\^/g, "**");
+var defineSqrt = defineMulti.replace(/√/g, "Math.sqrt");
+var defineSin = defineSqrt.replace(/sin/g, "Math.sin");
+var defineCos = defineSin.replace(/cos/g, "Math.cos");
+var defineTan = defineCos.replace(/tan/g, "Math.tan");
   var operator = {
     '÷' : '/',
     '×' : '*'
   }
  
-var convertOperator =  defineMulti.replace(/\b(?:÷|×)\b/gi, function(convert){
+var convertOperator =  defineTan.replace(/\b(?:÷|×)\b/gi, function(convert){
   return operator[convert];
 });
 
