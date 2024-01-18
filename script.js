@@ -1,3 +1,4 @@
+
 var rumus = document.getElementById("rumusEl");
 
 $('#satuEl').on("click", function() {
@@ -98,19 +99,50 @@ $('#clearEl').on("click", function() {
 
 //hitung rumusnya
 $('#jumlahEl').on("click", function() {
-  
+ var numbers = [0,1,2,3,4,5,6,7,8,9];
+ 
 var pi = rumus.textContent.replace(/π/g, "Math.PI");
-var defineMulti = pi.replace(/\^/g, "**");
-var defineSqrt = defineMulti.replace(/√/g, "Math.sqrt");
-var defineSin = defineSqrt.replace(/sin/g, "Math.sin");
-var defineCos = defineSin.replace(/cos/g, "Math.cos");
-var defineTan = defineCos.replace(/tan/g, "Math.tan");
+
+// Fix perkalian ()
+var fix = pi.replace(/\)\(/g, ")*(");
+var fix1 = fix.replace(/1\(/g, "1*(");
+var fix2 = fix1.replace(/2\(/g, "2*(");
+var fix3 = fix2.replace(/3\(/g, "3*(");
+var fix4 = fix3.replace(/4\(/g, "4*(");
+var fix5 = fix4.replace(/5\(/g, "5*(");
+var fix6 = fix5.replace(/6\(/g, "6*(");
+var fix7 = fix6.replace(/7\(/g, "7*(");
+var fix8 = fix7.replace(/8\(/g, "8*(");
+var fix9 = fix8.replace(/9\(/g, "9*(");
+var fix0 = fix9.replace(/0\(/g, "0*(");
+var fixPi = fix0.replace(/π\(/g, "π*(");
+
+var fix01 = fixPi.replace(/\)1/g, ")*1");
+var fix02 = fix01.replace(/\)2/g, ")*2");
+var fix03 = fix02.replace(/\)3/g, ")*3");
+var fix04 = fix03.replace(/\)4/g, ")*4");
+var fix05 = fix04.replace(/\)5/g, ")*5");
+var fix06 = fix05.replace(/\)6/g, ")*6");
+var fix07 = fix06.replace(/\)7/g, ")*7");
+var fix08 = fix07.replace(/\)8/g, ")*8");
+var fix09 = fix08.replace(/\)9/g, ")*9");
+var fix00 = fix09.replace(/\)0/g, ")*0");
+var fix0Pi = fix00.replace(/\)π/g, ")*π");
+
+// console.log(numbers);
+
   var operator = {
     '÷' : '/',
-    '×' : '*'
+    '×' : '*',
+    '^' : '**',
+  //  '√' : 'Math.sqrt', 
+    'sin' : 'Math.sin',
+    'cos' : 'Math.cos',
+    'tan' : 'Math.tan'
   }
+var defineSqrt = fix0Pi.replace(/√/g, "Math.sqrt");
  
-var convertOperator =  defineTan.replace(/\b(?:÷|×)\b/gi, function(convert){
+var convertOperator =  defineSqrt.replace(/\b(?:÷|×|\^|sin|cos|tan)\b/gi, function(convert){
   return operator[convert];
 });
 
@@ -120,8 +152,8 @@ var convertOperator =  defineTan.replace(/\b(?:÷|×)\b/gi, function(convert){
   try {
   $('#hasilEl').html(eval(convertOperator));
   $('#hasilEl').css("color", "black");
-} catch (e) {
+  } catch (e) {
   $('#hasilEl').html("Format Error");
   $('#hasilEl').css("color", "red");
-}
+  }
 })
