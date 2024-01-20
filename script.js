@@ -1,5 +1,6 @@
 
 var rumus = document.getElementById("rumusEl");
+var hasil = document.getElementById("hasilEl");
 
 $('#satuEl').on("click", function() {
   $('#rumusEl').append("1");
@@ -98,13 +99,16 @@ $('#clearEl').on("click", function() {
 
 
 //hitung rumusnya
-$('#jumlahEl').on("click", function() {
- var numbers = [0,1,2,3,4,5,6,7,8,9];
- 
+
+function hitungRumus() {
 var pi = rumus.textContent.replace(/π/g, "Math.PI");
 
 // Fix perkalian ()
-var fix = pi.replace(/\)\(/g, ")*(");
+var fixSin = pi.replace(/\)s/g, ")*s");
+var fixCos = fixSin.replace(/\)c/g, ")*c");
+var fixTan = fixCos.replace(/\)t/g, ")*t");
+
+var fix = fixTan.replace(/\)\(/g, ")*(");
 var fix1 = fix.replace(/1\(/g, "1*(");
 var fix2 = fix1.replace(/2\(/g, "2*(");
 var fix3 = fix2.replace(/3\(/g, "3*(");
@@ -148,12 +152,24 @@ var convertOperator =  defineSqrt.replace(/\b(?:÷|×|\^|sin|cos|tan)\b/gi, func
 
 
 // console.log(convertOperator + "=" + eval(convertOperator));
-
   try {
   $('#hasilEl').html(eval(convertOperator));
   $('#hasilEl').css("color", "black");
-  } catch (e) {
+  } catch (error) {
   $('#hasilEl').html("Format Error");
   $('#hasilEl').css("color", "red");
   }
+}
+
+
+$('.btnNum').on("click", function() {
+  hitungRumus();
+})
+$('.btnTop').on("click", function() {
+  hitungRumus();
+})
+$('#jumlahEl').on("click", function() {
+  hitungRumus();
+  rumus.innerHTML = hasil.textContent;
+  hasil.innerHTML ="";
 })
