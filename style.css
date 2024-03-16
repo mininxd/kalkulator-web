@@ -1,4 +1,7 @@
- body {
+@import url("./desktop.css");
+
+
+body {
    position: relative;
    padding:0;
    font-family: Sans-Serif;
