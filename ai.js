@@ -60,7 +60,7 @@ $('.openModal').on('click', function() {
 const rumusFix = rumus.textContent.replace("+"," add ");
    
   $('.modal').css('display', 'block');
-  text = "kerjakan matematika saya, bulatkan dan jumlah desimal jika ada, ini rumusnya " + rumusFix + ", dan jelaskan rumus tersebut pakai bahasa indonesia, kalau rumusnya tidak ada kosongkan";
+  text = "kerjakan soal matematika saya, bulatkan bilangan dan beri desimal jika ada, ini rumusnya " + rumusFix + ", dan jelaskan rumus tersebut, kalau rumusnya tidak ada kosongkan";
   prompt = text;
   hitung();
   }
