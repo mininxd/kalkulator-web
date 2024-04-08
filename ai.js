@@ -29,7 +29,7 @@ fetch('https://chat.ai.cneko.org/?t=' + text + '&p=' + prompt).then(res => {retu
 .then(data => {
   //console.log(data);
  const result = ganti( data.response, {
-   '"' : "", '\n': ' <br> ' 
+   '"' : "", '\n': ' <br> ', 'add':'+'
  });
 
  $('.loaderWrapper').css("display","none");
