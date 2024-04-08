@@ -4,12 +4,12 @@ div.desktop-container{
   display: flex;
   flex: center;
   justify-content: center;
-  margin-top: 50%;
+  margin-top: 1em;
 }
 
 div.desktop-wrapper {
   max-width: 375px;
-  height: 575px;
+  height: fit-content;
   background: #222;
   border:2px solid #000;
   padding: 10px;
@@ -44,10 +44,16 @@ div.desktop-button {
   text-align: center;
 }
 
-
+div.modalWrapper {
+  width: 50%;
+  height: 100%;
+}
 p.footer {
-   transform: translateY(-3em);
+   transform: translateY(0);
    color: #fff;
+   padding: 0;
  }
-  
+.tag {
+  display: none;
+}
 }
