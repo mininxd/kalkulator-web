@@ -25,10 +25,10 @@ function timer() {
 setInterval(timer, 100);
 
 function hitung() {
-fetch('https://chat.ai.cneko.org/?t=' + text + '&p=' + prompt).then(res => {return res.json()})
+fetch('https://api.mininxd.my.id/gemini/?q=' + text + '&p=' + prompt).then(res => {return res.json()})
 .then(data => {
-  //console.log(data);
- const result = ganti( data.response, {
+  console.log(data);
+ const result = ganti(data.text, {
    '"' : "", '\n': ' <br> ', 'add':'+'
  });
 
@@ -36,7 +36,7 @@ fetch('https://chat.ai.cneko.org/?t=' + text + '&p=' + prompt).then(res => {retu
  $('#donate').css("display","flex");
   $('#resultEl').html('<md-block>' + result + '</md-block>');
 }).catch(e => {
-  //console.log(e);
+  console.log(e);
   $('.loaderWrapper').css("display","none");
   $('#resultEl').html('<h2>Failed to Fetch</h2><ul>  <li>Cek kembali jaringan kamu</li> <li>koneksi ke AI gagal</li> <li>coba refresh halaman</li> </ul>');
 });
