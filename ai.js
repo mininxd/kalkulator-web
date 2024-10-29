@@ -25,7 +25,16 @@ function timer() {
 setInterval(timer, 100);
 
 function hitung() {
-fetch('https://api.mininxd.my.id/gemini/?q=' + text + '&p=' + prompt).then(res => {return res.json()})
+fetch('https://api.mininxd.my.id/gemini/', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    text: `${text} '&p=' ${prompt}`
+  })
+}).then(res => {return res.json()})
+
 .then(data => {
   console.log(data);
  const result = ganti(data.text, {
@@ -57,10 +66,8 @@ $('.openModal').on('click', function() {
   } else {
   i = 0;
 //fix pertambahan
-const rumusFix = rumus.textContent.replace("+"," add ");
-   
   $('.modal').css('display', 'block');
-  text = "kerjakan soal matematika saya, ini rumusnya " + rumusFix + ", dan jelaskan penyelesaian rumus tersebut";
+  text = "kerjakan soal matematika saya, ini rumusnya " + rumus.textContent + ", dan jelaskan penyelesaian rumus tersebut";
   prompt = text;
   hitung();
   }
