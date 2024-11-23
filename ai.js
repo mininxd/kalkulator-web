@@ -25,7 +25,7 @@ function timer() {
 setInterval(timer, 100);
 
 function hitung() {
-fetch('https://api.mininxd.my.id/gemini/', {
+fetch('https://api-mininxd.vercel.app/gemini/', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
