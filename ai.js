@@ -31,7 +31,7 @@ fetch('https://api-mininxd.vercel.app/gemini/', {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    text: `${text} '&p=' ${prompt}`
+    text: `${text}`
   })
 }).then(res => {return res.json()})
 
